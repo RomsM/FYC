@@ -1,0 +1,9 @@
+﻿@model ProductManagementAPI.Models.Product
+
+<h1>@Model.Name</h1>
+<p>Description: @Model.Description</p>
+<p>Prix: @Model.Price.ToString("0.00") €</p>
+<p>Stock: @Model.Stock</p>
+
+<a href="/product">Retour à la liste</a>
+@section Scripts {}

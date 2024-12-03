@@ -1,0 +1,48 @@
+﻿@model ProductManagementAPI.Models.Product
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        <strong>Erreur :</strong> @ViewBag.Error
+        <p>@ViewBag.ErrorDetails</p>
+    </div>
+}
+@if (!ViewData.ModelState.IsValid)
+{
+    <ul>
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <li>@error.ErrorMessage</li>
+        }
+    </ul>
+}
+<h1>Modifier le produit</h1>
+<form asp-action="Edit" method="post">
+    <p>
+        <label>Nom:</label>
+        <input type="text" asp-for="Name" name="Name" required value="@Model.Name"/>
+        <span asp-validation-for="Name"></span>
+    </p>
+    <p>
+        <label>Description:</label>
+        <textarea type="text" asp-for="Description" name="Description" required>@Model.Description</textarea>
+        <span asp-validation-for="Description"></span>
+    </p>
+    <p>
+        <label>Prix:</label>
+        <input type="number" asp-for="Price" name="Price" step="0.01" required value="@Model.Price.ToString("G", System.Globalization.CultureInfo.InvariantCulture)" />
+        <span asp-validation-for="Price"></span>
+    </p>
+    <p>
+        <label>Stock:</label>
+        <input type="number" asp-for="Stock" name="Stock" required value="@Model.Stock"  />
+        <span asp-validation-for="Stock"></span>
+    </p>
+    <input type="hidden" asp-for="Id" name="Id" value="@Model.Id" />
+    <button type="submit">Modifier</button>
+</form>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+}

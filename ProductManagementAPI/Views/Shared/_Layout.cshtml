@@ -1,0 +1,26 @@
+﻿@RenderSection("Scripts", required: true)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestion des Produits</title>
+</head>
+<body>
+    <header>
+        <h1>Gestion des Produits</h1>
+        <nav>
+            <a href="/">Accueil</a> |
+            <a href="/product">Produits</a>
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+        <p>&copy; 2024 - FYC</p>
+    </footer>
+    @section Scripts {
+
+    }
+</body>
+</html>

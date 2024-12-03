@@ -1,0 +1,49 @@
+﻿@model List<ProductManagementAPI.Models.Product>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        <strong>Erreur :</strong> @ViewBag.Error
+        <p>@ViewBag.ErrorDetails</p>
+    </div>
+}
+<br />
+<a href="/product/add">Ajouter un produit</a>
+<br />
+<h1>Liste des produits</h1>
+<br />
+@if (Model == null || !Model.Any())
+{
+    <p>Aucun produit disponible pour le moment.</p>
+}
+else 
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td style="text-align:right;">@product.Price.ToString("0.00") €</td>
+                    <td>@product.Stock</td>
+                    <td>
+                        <a href="/product/view/@product.Id">Voir</a> |
+                        <a href="/product/edit/@product.Id">Modifier</a> |
+                        <a href="/product/delete/@product.Id">Supprimer</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@section Scripts {
+}
