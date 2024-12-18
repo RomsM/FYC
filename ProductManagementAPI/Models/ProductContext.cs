@@ -1,10 +1,13 @@
-﻿using ProductManagementAPI.Models;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ProductManagementAPI.Models;
 
-
-public class ProductContext : DbContext
+namespace ProductManagementAPI.Data
 {
-    public ProductContext(DbContextOptions<ProductContext> options) : base(options) { }
+    public class ProductContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+    {
+        public ProductContext(DbContextOptions<ProductContext> options) : base(options) { }
 
-    public DbSet<Product> product { get; set; }
+        public DbSet<Product> product { get; set; }
+    }
 }
