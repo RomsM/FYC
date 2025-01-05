@@ -1,24 +1,21 @@
-﻿@RenderSection("Scripts", required: true)
+﻿@RenderSection("Scripts", required: false)
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Gestion des Produits</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FYC - e-commerce</title>
+    <link href="~/css/style.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <h1>Gestion des Produits</h1>
-        <nav>
-            <a href="/">Accueil</a> |
-            <a href="/product">Produits</a>
-        </nav>
-    </header>
+    @await Html.PartialAsync("_Header")
     <main>
-        @RenderBody()
+        <div class="mx-auto max-w-7xl p-4">
+            @RenderBody()
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2024 - FYC</p>
-    </footer>
+    @await Html.PartialAsync("_Footer")
     @section Scripts {
 
     }

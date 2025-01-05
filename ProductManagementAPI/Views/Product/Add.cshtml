@@ -1,48 +1,29 @@
-﻿@model ProductManagementAPI.Models.Product
+﻿@model ProductManagementAPI.Models.FrontProduct
+<div class="mb-4">
+    <a href="/product" class="w-fit rounded-sm bg-blue-500 p-2 text-white hover:bg-blue-600 focus:bg-blue-600">Retour à la liste</a>
+</div>
+<h1 class="mb-4 text-2xl font-bold">Ajouter un produit</h1>
 
 <form asp-action="Add" method="post">
-    @if (!ViewData.ModelState.IsValid)
-    {
-        <ul>
-            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-            {
-                <li>@error.ErrorMessage</li>
-            }
-        </ul>
-    }
-    @if (ViewBag.Error != null)
-    {
-        <div class="alert alert-danger">
-            <strong>Erreur :</strong> @ViewBag.Error
-            <p>@ViewBag.ErrorDetails</p>
+    <div class="grid-cols-1 grid gap-8">
+        <div class="flex flex-col gap-2">
+            <label for="Name" class="font-bold">Nom</label>
+            <input type="text" id="Name" name="Name" required class="rounded-sm border border-black p-2" />
         </div>
-    }
-
-    <p>
-        <label>Nom:</label>
-        <input type="text" asp-for="Name" name="Name" required />
-        <span asp-validation-for="Name"></span>
-    </p>
-    <p>
-        <label>Description:</label>
-        <textarea asp-for="Description" name="Description" required></textarea>
-        <span asp-validation-for="Description"></span>
-    </p>
-    <p>
-        <label>Prix:</label>
-        <input type="number" asp-for="Price" name="Price" step="0.01" required />
-        <span asp-validation-for="Price"></span>
-    </p>
-    <p>
-        <label>Stock:</label>
-        <input type="number" asp-for="Stock" name="Stock" required />
-        <span asp-validation-for="Stock"></span>
-    </p>
-    <button type="submit">Ajouter</button>
+        <div class="flex flex-col gap-2">
+            <label for="Description" class="font-bold">Description</label>
+            <textarea id="Description" name="Description" required class="rounded-sm border border-black p-2"></textarea>
+        </div>
+        <div class="flex flex-col gap-2">
+            <label for="Price" class="font-bold">Prix</label>
+            <input type="number" id="Price" name="Price" step="0.01" required class="rounded-sm border border-black p-2" />
+        </div>
+        <div class="flex flex-col gap-2">
+            <label for="Stock" class="font-bold">Stock</label>
+            <input type="number" id="Stock" name="Stock" required class="rounded-sm border border-black p-2" />
+        </div>
+        <div>
+            <button type="submit" class="w-fit rounded-sm bg-blue-500 p-2 text-white hover:bg-blue-600 focus:bg-blue-600">Ajouter</button>
+        </div>
+    </div>
 </form>
-
-@section Scripts {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
-}

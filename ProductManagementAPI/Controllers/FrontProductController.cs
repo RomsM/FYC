@@ -13,7 +13,7 @@ namespace ProductManagementAPI.Controllers
         {
             _httpClient = new HttpClient
             {
-                BaseAddress = new Uri("https://localhost:7250/api/") // Adresse de l'API
+                BaseAddress = new Uri("https://localhost:7250/api/")
             };
         }
 
@@ -23,15 +23,12 @@ namespace ProductManagementAPI.Controllers
             try
             {
                 var response = await _httpClient.GetStringAsync("product");
-                var products = JsonConvert.DeserializeObject<List<Product>>(response);
+                var products = JsonConvert.DeserializeObject<List<FrontProduct>>(response);
                 return View(products);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // Gérer les erreurs et afficher un message
-                ViewBag.Error = "Erreur lors du chargement des produits.";
-                ViewBag.ErrorDetails = ex.Message;
-                return View(new List<Product>()); // Retourne une liste vide
+                return View(new List<Product>());
             }
         }
 
@@ -41,14 +38,12 @@ namespace ProductManagementAPI.Controllers
             try
             {
                 var response = await _httpClient.GetStringAsync($"product/{id}");
-                var product = JsonConvert.DeserializeObject<Product>(response);
+                var product = JsonConvert.DeserializeObject<FrontProduct>(response);
                 return View(product);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ViewBag.Error = "Erreur lors du chargement du produit.";
-                ViewBag.ErrorDetails = ex.Message;
-                return RedirectToAction("Index"); // Redirige vers la liste
+                return Redirect("/product");
             }
         }
 
@@ -60,7 +55,7 @@ namespace ProductManagementAPI.Controllers
 
         // Ajouter un produit (POST)
         [HttpPost]
-        public async Task<IActionResult> Add(Product product)
+        public async Task<IActionResult> Add(FrontProduct product)
         {
             if (!ModelState.IsValid)
             {
@@ -75,14 +70,12 @@ namespace ProductManagementAPI.Controllers
                 var response = await _httpClient.PostAsync("product", content);
                 if (response.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index");
+                    return Redirect("/product");
                 }
-
-                ModelState.AddModelError(string.Empty, "Erreur lors de l'ajout du produit.");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ModelState.AddModelError(string.Empty, $"Une erreur s'est produite : {ex.Message}");
+                return Redirect("/product");
             }
 
             return View(product);
@@ -94,27 +87,24 @@ namespace ProductManagementAPI.Controllers
             try
             {
                 var response = await _httpClient.GetStringAsync($"product/{id}");
-                var product = JsonConvert.DeserializeObject<Product>(response);
+                var product = JsonConvert.DeserializeObject<FrontProduct>(response);
                 if (product == null)
                 {
-                    ViewBag.Error = "Produit introuvable.";
-                    return RedirectToAction("Index");
+                    return Redirect("/product");
                 }
 
-                return View(product); // Passe le produit à la vue
+                return View(product);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ViewBag.Error = "Erreur lors du chargement du produit.";
-                ViewBag.ErrorDetails = ex.Message;
-                return RedirectToAction("Index");
+                return Redirect("/product");
             }
         }
 
         // Modifier un produit (POST)
         [HttpPost]
-        public async Task<IActionResult> Edit(Product product)
+        public async Task<IActionResult> Edit(FrontProduct product)
         {
             if (!ModelState.IsValid)
             {
@@ -129,14 +119,12 @@ namespace ProductManagementAPI.Controllers
                 var response = await _httpClient.PutAsync($"product/{product.Id}", content);
                 if (response.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index");
+                    return Redirect("/product");
                 }
-
-                ModelState.AddModelError(string.Empty, "Erreur lors de la mise à jour du produit.");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ModelState.AddModelError(string.Empty, $"Une erreur s'est produite : {ex.Message}");
+                return Redirect("/product");
             }
 
             return View(product);
@@ -150,19 +138,15 @@ namespace ProductManagementAPI.Controllers
                 var response = await _httpClient.DeleteAsync($"product/{id}");
                 if (response.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index");
+                    return Redirect("/product");
                 }
-
-                ViewBag.Error = "Erreur lors de la suppression du produit.";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ViewBag.Error = "Une erreur s'est produite lors de la suppression.";
-                ViewBag.ErrorDetails = ex.Message;
+                return Redirect("/product");
             }
 
-            ViewBag.Success = "Suppression réussie";
-            return RedirectToAction("Index");
+            return Redirect("/product");
         }
     }
 }
