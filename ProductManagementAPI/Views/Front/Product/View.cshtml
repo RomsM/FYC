@@ -1,0 +1,25 @@
+﻿@model ProductManagementAPI.Models.FrontProduct
+
+<section>
+    <div class="bg-white mx-auto max-w-4xl overflow-hidden rounded-lg shadow-md">
+        <div class="relative">
+            <img src="https://via.placeholder.com/600x400"
+                 alt="@Model.Name"
+                 class="h-64 w-full object-cover" />
+        </div>
+        <div class="p-6">
+            <h1 class="text-gray-800 text-3xl font-bold">@Model.Name</h1>
+            <p class="text-blue-600 mt-4 text-lg font-semibold">@Model.Price �</p>
+            <p class="text-gray-600 mt-6 leading-relaxed">@Model.Description</p>
+            <p class="text-gray-600 mt-4">
+                <span class="font-semibold">Stock: </span>@Model.Stock
+            </p>
+        </div>
+        <div class="p-6 border-t">
+            <a href="/product"
+               class="py-2 px-4 bg-blue-500 text-white block rounded text-center font-semibold hover:bg-blue-600">
+                Retour � la liste
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,9 +1,9 @@
-﻿@model List<ProductManagementAPI.Models.FrontProduct>
+﻿@model List<ProductManagementAPI.Models.Product>
 <section>
-    <div class="flex flex-col gap-8 py-4">
-        <div class="flex flex-col gap-4">
-            <h1 class="font-bold text-2xl">Liste des produits</h1>
-            <a class="p-2 rounded-sm bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 text-white w-fit" href="/product/add">Ajouter un produit</a>
+    <div class="gap-8 py-4 flex flex-col">
+        <div class="gap-4 flex flex-col">
+            <h1 class="text-2xl font-bold">Liste des produits</h1>
+            <a class="p-2 bg-blue-500 text-white w-fit rounded-sm hover:bg-blue-600 focus:bg-blue-600" href="/product/add">Ajouter un produit</a>
         </div>
         @if (Model == null || !Model.Any())
         {
@@ -30,10 +30,10 @@
                             <td >@product.Price.ToString("0.00") €</td>
                             <td>@product.Stock</td>
                             <td>
-                                <div class="flex gap-4">
-                                    <a class="p-2 rounded-sm bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 text-white" href="/product/view/@product.Id">Voir</a>
-                                    <a class="p-2 rounded-sm bg-green-500 hover:bg-green-600 focus:bg-green-600 text-white" href="/product/edit/@product.Id">Modifier</a>
-                                    <a class="p-2 rounded-sm bg-red-500 hover:bg-red-600 focus:bg-red-600 text-white" href="/product/delete/@product.Id">Supprimer</a>
+                                <div class="gap-4 flex">
+                                    <a class="p-2 bg-blue-500 text-white rounded-sm hover:bg-blue-600 focus:bg-blue-600" href="/product/view/@product.Id">Voir</a>
+                                    <a class="p-2 bg-green-500 text-white rounded-sm hover:bg-green-600 focus:bg-green-600" href="/product/edit/@product.Id">Modifier</a>
+                                    <a class="p-2 bg-red-500 text-white rounded-sm hover:bg-red-600 focus:bg-red-600" href="/product/delete/@product.Id">Supprimer</a>
                                 </div>
                             </td>
                         </tr>

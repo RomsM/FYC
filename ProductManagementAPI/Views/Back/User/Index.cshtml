@@ -1,0 +1,42 @@
+﻿@model List<ProductManagementAPI.Models.User>
+<section>
+    <div class="gap-8 py-4 flex flex-col">
+        <div class="gap-4 flex flex-col">
+            <h1 class="text-2xl font-bold">Liste des utilisateurs</h1>
+            <a class="p-2 bg-blue-500 text-white w-fit rounded-sm hover:bg-blue-600 focus:bg-blue-600" href="/admin/user/add">Ajouter un utilisateur</a>
+        </div>
+        @if (Model == null || !Model.Any())
+        {
+            <p>Aucun utilisateur trouvé pour le moment.</p>
+        }
+        else 
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Id</td>
+                            <td>@user.Email</td>
+                            <td>@user.Username</td>
+                            <td>
+                                <div class="gap-4 flex">
+                                    <a class="p-2 bg-blue-500 text-white rounded-sm hover:bg-blue-600 focus:bg-blue-600" href="/user/view/@user.Id">Voir</a>
+                                    <a class="p-2 bg-green-500 text-white rounded-sm hover:bg-green-600 focus:bg-green-600" href="/user/edit/@user.Id">Modifier</a>
+                                    <a class="p-2 bg-red-500 text-white rounded-sm hover:bg-red-600 focus:bg-red-600" href="/user/delete/@user.Id">Supprimer</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</section>
