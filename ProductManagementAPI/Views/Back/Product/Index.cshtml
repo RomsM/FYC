@@ -1,9 +1,9 @@
-﻿@model List<ProductManagementAPI.Models.Product>
+﻿@model List<ProductManagementAPI.Models.BackProduct>
 <section>
     <div class="gap-8 py-4 flex flex-col">
         <div class="gap-4 flex flex-col">
             <h1 class="text-2xl font-bold">Liste des produits</h1>
-            <a class="p-2 bg-blue-500 text-white w-fit rounded-sm hover:bg-blue-600 focus:bg-blue-600" href="/product/add">Ajouter un produit</a>
+            <a class="p-2 bg-blue-500 text-white w-fit rounded-sm hover:bg-blue-600 focus:bg-blue-600" href="/admin/product/add">Ajouter</a>
         </div>
         @if (Model == null || !Model.Any())
         {
@@ -31,9 +31,9 @@
                             <td>@product.Stock</td>
                             <td>
                                 <div class="gap-4 flex">
-                                    <a class="p-2 bg-blue-500 text-white rounded-sm hover:bg-blue-600 focus:bg-blue-600" href="/product/view/@product.Id">Voir</a>
-                                    <a class="p-2 bg-green-500 text-white rounded-sm hover:bg-green-600 focus:bg-green-600" href="/product/edit/@product.Id">Modifier</a>
-                                    <a class="p-2 bg-red-500 text-white rounded-sm hover:bg-red-600 focus:bg-red-600" href="/product/delete/@product.Id">Supprimer</a>
+                                    <a class="p-2 bg-blue-500 text-white rounded-sm hover:bg-blue-600 focus:bg-blue-600" href="/admin/product/view/@product.Id">Voir</a>
+                                    <a class="p-2 bg-green-500 text-white rounded-sm hover:bg-green-600 focus:bg-green-600" href="/admin/product/edit/@product.Id">Modifier</a>
+                                    <a class="p-2 bg-red-500 text-white rounded-sm hover:bg-red-600 focus:bg-red-600" href="/admin/product/delete/@product.Id">Supprimer</a>
                                 </div>
                             </td>
                         </tr>

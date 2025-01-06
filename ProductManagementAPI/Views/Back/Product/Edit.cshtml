@@ -1,6 +1,6 @@
-﻿@model ProductManagementAPI.Models.Product
+﻿@model ProductManagementAPI.Models.BackProduct
 <div class="mb-4">
-    <a href="/product" class="bg-blue-500 p-2 text-white w-fit rounded-sm hover:bg-blue-600 focus:bg-blue-600">Retour à la liste</a>
+    <a href="/admin/product" class="bg-blue-500 p-2 text-white w-fit rounded-sm hover:bg-blue-600 focus:bg-blue-600">Retour à la liste</a>
 </div>
 <h1 class="mb-4 text-2xl font-bold">Modification du produit n° @Model.Id</h1>
 <form asp-action="Edit" method="post">

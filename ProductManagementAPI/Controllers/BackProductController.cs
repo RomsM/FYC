@@ -25,13 +25,23 @@ namespace ProductManagementAPI.Controllers.Back
             try
             {
                 var response = await _httpClient.GetStringAsync("product");
-                var products = JsonConvert.DeserializeObject<List<FrontProduct>>(response) ?? new List<FrontProduct>();
-                return View("~/Views/Back/Product/Index.cshtml", products); // Admin view
+                var frontProducts = JsonConvert.DeserializeObject<List<FrontProduct>>(response) ?? new List<FrontProduct>();
+
+                var backProducts = frontProducts.Select(fp => new BackProduct
+                {
+                    Id = fp.Id,
+                    Name = fp.Name,
+                    Description = fp.Description,
+                    Price = fp.Price,
+                    Stock = fp.Stock,
+                }).ToList();
+
+                return View("~/Views/Back/Product/Index.cshtml", backProducts);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return View("~/Views/Back/Product/Index.cshtml", new List<FrontProduct>()); // Empty fallback
+                return View("~/Views/Back/Product/Index.cshtml", new List<BackProduct>());
             }
         }
 
@@ -44,7 +54,7 @@ namespace ProductManagementAPI.Controllers.Back
 
         // Admin Add Product (POST)
         [HttpPost("add")]
-        public async Task<IActionResult> Add(FrontProduct product)
+        public async Task<IActionResult> Add(BackProduct product)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +63,16 @@ namespace ProductManagementAPI.Controllers.Back
 
             try
             {
-                var jsonProduct = JsonConvert.SerializeObject(product);
+                var frontProduct = new FrontProduct
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Description = product.Description,
+                    Price = product.Price,
+                    Stock = product.Stock
+                };
+
+                var jsonProduct = JsonConvert.SerializeObject(frontProduct);
                 var content = new StringContent(jsonProduct, Encoding.UTF8, "application/json");
 
                 var response = await _httpClient.PostAsync("product", content);
@@ -69,7 +88,5 @@ namespace ProductManagementAPI.Controllers.Back
 
             return View("~/Views/Back/Product/Add.cshtml", product);
         }
-
-        // Other admin actions (Edit, Delete) are similar
     }
 }
