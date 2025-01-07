@@ -1,0 +1,23 @@
+﻿@model ProductManagementAPI.Models.User
+<section>
+    <div class="mb-4">
+        <a href="/admin/user" class="bg-blue-500 p-2 text-white w-fit rounded-sm hover:bg-blue-600 focus:bg-blue-600">Retour à la liste</a>
+    </div>
+    <h1 class="mb-4 text-2xl font-bold">Ajouter un utilisateur</h1>
+
+    <form asp-action="Add" method="post">
+        <div class="gap-8 grid grid-cols-1">
+            <div class="gap-2 flex flex-col">
+                <label for="Username" class="font-bold">Username</label>
+                <input type="text" id="Username" name="Username" class="border-black p-2 rounded-sm border" />
+            </div>
+            <div class="gap-2 flex flex-col">
+                <label for="Email" class="font-bold">Email</label>
+                <input type="text" id="Email" name="Email" class="border-black p-2 rounded-sm border" />
+            </div>
+            <div>
+                <button type="submit" class="bg-blue-500 p-2 text-white w-fit rounded-sm hover:bg-blue-600 focus:bg-blue-600">Ajouter</button>
+            </div>
+        </div>
+    </form>
+</section>
