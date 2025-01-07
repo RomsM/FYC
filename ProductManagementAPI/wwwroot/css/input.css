@@ -34,3 +34,7 @@ table th,
 table td {
     @apply border-b border-b-slate-600 px-2 py-3;
 }
+
+a.admin-link{
+  @apply py-2 block hover:underline;
+}

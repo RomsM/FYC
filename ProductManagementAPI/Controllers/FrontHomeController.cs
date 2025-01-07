@@ -2,11 +2,12 @@
 
 namespace ProductManagementAPI.Controllers
 {
-    public class HomeController : Controller
+    [Route("")]
+    public class FrontHomeController : Controller
     {
         public IActionResult Index()
         {
-            return View();
+            return View("~/Views/Front/Home/Index.cshtml");
         }
     }
 }

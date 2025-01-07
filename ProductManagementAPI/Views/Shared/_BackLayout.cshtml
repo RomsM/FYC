@@ -1,0 +1,30 @@
+﻿@RenderSection("Scripts", required: false)
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FYC - e-commerce - Administration</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    @await Html.PartialAsync("_BackHeader")
+    <div class="mx-auto max-w-7xl w-full">
+        <div class="flex h-full">
+            <aside class="w-1/3 h-full border-r border-r-slate-200">
+                @await Html.PartialAsync("_BackAside")
+            </aside>
+            <main class="w-full">
+                <div class="p-4">
+                    @RenderBody()
+                </div>
+            </main>
+        </div>
+    </div>
+    @await Html.PartialAsync("_BackFooter")
+    @section Scripts {
+
+    }
+</body>
+</html>
