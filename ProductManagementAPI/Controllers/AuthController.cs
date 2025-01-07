@@ -52,7 +52,7 @@ public class AuthController : ControllerBase
         if (result.Succeeded)
         {
             var user = await _userManager.FindByNameAsync(model.Username);
-            if (user == null)
+            if (user == null || string.IsNullOrEmpty(user.UserName))
             {
                 return Unauthorized("Invalid login attempt.");
             }
@@ -69,7 +69,7 @@ public class AuthController : ControllerBase
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.UserName)
+                new Claim(ClaimTypes.Name, user.UserName ?? string.Empty)
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256Signature)

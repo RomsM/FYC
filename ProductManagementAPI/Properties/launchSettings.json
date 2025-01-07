@@ -1,27 +1,22 @@
 {
   "profiles": {
-    "http": {
+    "ProductManagementAPI": {
       "commandName": "Project",
+      "dotnetRunMessages": true,
+      "dotnetWatch": true,
+      "applicationUrl": "http://localhost:5093;https://localhost:7250",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5093"
-    },
-    "https": {
-      "commandName": "Project",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7250;http://localhost:5093"
+      }
     },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "http://localhost:52902/",
+      "sslPort": 44337
     }
   },
   "$schema": "https://json.schemastore.org/launchsettings.json",

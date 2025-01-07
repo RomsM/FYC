@@ -1,0 +1,23 @@
+﻿@RenderSection("Scripts", required: false)
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FYC - e-commerce</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    @await Html.PartialAsync("_Header")
+    <main>
+        <div class="mx-auto max-w-7xl p-4">
+            @RenderBody()
+        </div>
+    </main>
+    @await Html.PartialAsync("_Footer")
+    @section Scripts {
+
+    }
+</body>
+</html>

@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProductManagementAPI.Models
 {
-    public class Product
+    public class BackProduct
     {
         public int Id { get; set; }
         public required string Name { get; set; }

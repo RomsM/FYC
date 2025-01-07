@@ -1,0 +1,32 @@
+﻿@model ProductManagementAPI.Models.BackProduct
+<div class="mb-4">
+    <a href="/admin/product" class="bg-blue-500 p-2 text-white w-fit rounded-sm hover:bg-blue-600 focus:bg-blue-600">Retour à la liste</a>
+</div>
+<h1 class="mb-4 text-2xl font-bold">Modification du produit n° @Model.Id</h1>
+<form asp-action="Edit" method="post">
+    <div class="gap-8 grid grid-cols-1">
+        <div class="gap-2 flex flex-col">
+            <label for="Id" class="font-bold">ID</label>
+            <input type="text" id="Id" name="Id" required readonly value="@Model.Id" class="border-black bg-slate-200 p-2 rounded-sm border" />
+        </div>
+        <div class="gap-2 flex flex-col">
+            <label for="Name" class="font-bold">Nom</label>
+            <input type="text" id="Name" name="Name" required value="@Model.Name" class="border-black p-2 rounded-sm border" />
+        </div>
+        <div class="gap-2 flex flex-col">
+            <label for="Description" class="font-bold">Description</label>
+            <textarea id="Description" name="Description" required class="border-black p-2 rounded-sm border">@Model.Description</textarea>
+        </div>
+        <div class="gap-2 flex flex-col">
+            <label for="Price" class="font-bold">Prix</label>
+            <input type="number" id="Price" name="Price" step="0.01" required value="@Model.Price.ToString("G", System.Globalization.CultureInfo.InvariantCulture)" class="border-black p-2 rounded-sm border" />
+        </div>
+        <div class="gap-2 flex flex-col">
+            <label for="Stock" class="font-bold">Stock</label>
+            <input type="number" id="Stock" name="Stock" required value="@Model.Stock" class="border-black p-2 rounded-sm border" />
+        </div>
+        <div>
+            <button type="submit" class="bg-blue-500 p-2 text-white w-fit rounded-sm hover:bg-blue-600 focus:bg-blue-600">Modifier</button>
+        </div>
+    </div>
+</form>

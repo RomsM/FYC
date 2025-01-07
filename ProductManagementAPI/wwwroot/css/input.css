@@ -1,0 +1,36 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=auto');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    font-family: "Montserrat", sans-serif;
+    @apply h-full;
+}
+
+body{
+    @apply grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+body > header {
+    @apply border-b border-b-slate-200;
+}
+
+body > footer {
+    @apply border-t border-t-slate-200;
+}
+
+table {
+    @apply w-full table-auto border-collapse border border-slate-600;
+}
+
+table thead {
+    @apply text-left font-bold;
+}
+
+table th,
+table td {
+    @apply border-b border-b-slate-600 px-2 py-3;
+}

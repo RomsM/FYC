@@ -2,7 +2,7 @@
 
 namespace ProductManagementAPI.Models
 {
-    public class Product
+    public class FrontProduct
     {
         public int Id { get; set; }
         public required string Name { get; set; }
