@@ -1,0 +1,56 @@
+﻿@model ProductManagementAPI.Models.User
+
+<section>
+    <h1 class="mb-6 text-3xl font-bold">Mon Profil</h1>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+    <div class="mb-6 rounded bg-green-100 p-4 text-green-800">
+        @TempData["SuccessMessage"]
+    </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+    <div class="mb-6 rounded bg-red-100 p-4 text-red-800">
+        @TempData["ErrorMessage"]
+    </div>
+    }
+
+    <form asp-action="Index" method="post">
+        <div class="grid-cols-1 grid gap-8">
+            <div class="flex flex-col gap-2">
+                <label for="Id" class="font-bold">ID</label>
+                <input type="text" id="Id" name="Id" required readonly value="@Model.Id" class="rounded-sm border border-black bg-slate-200 p-2" />
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="Username" class="font-bold">Username</label>
+                <input type="text" id="Username" name="Username" required readonly value="@Model.Username" class="rounded-sm border border-black bg-slate-200 p-2" />
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="Email" class="font-bold">Email</label>
+                <input type="email" id="Email" name="Email" required value="@Model.Email" class="rounded-sm border border-black p-2" />
+            </div>
+        </div>
+        <h2 class="mt-8 text-xl font-bold">Changer le mot de passe</h2>
+        <div class="grid-cols-1 grid gap-8">
+            <div class="flex flex-col gap-2">
+                <label for="OldPassword" class="font-bold">Ancien mot de passe</label>
+                <input type="password" id="OldPassword" name="OldPassword" class="rounded-sm border border-black p-2" />
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="NewPassword" class="font-bold">Nouveau mot de passe</label>
+                <input type="password" id="NewPassword" name="NewPassword" class="rounded-sm border border-black p-2" />
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="ConfirmNewPassword" class="font-bold">Confirmez le nouveau mot de passe</label>
+                <input type="password" id="ConfirmNewPassword" name="ConfirmNewPassword" class="rounded-sm border border-black p-2" />
+            </div>
+            <div>
+                <button type="submit" class="w-fit rounded-sm bg-blue-500 p-2 text-white hover:bg-blue-600 focus:bg-blue-600">
+                    Enregistrer les modifications
+                </button>
+            </div>
+        </div>
+    </form>
+</section>
