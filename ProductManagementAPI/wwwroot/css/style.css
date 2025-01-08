@@ -565,6 +565,10 @@ video {
   margin-right: auto;
 }
 
+.mb-12{
+  margin-bottom: 3rem;
+}
+
 .mb-4{
   margin-bottom: 1rem;
 }
@@ -857,6 +861,50 @@ table td{
   padding-right: 0.5rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.auth{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.login, .register{
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+.register{
+  border-left-width: 1px;
+}
+
+.auth h2{
+  margin-bottom: 4rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.auth form{
+  display: flex;
+  flex-direction: column;
+}
+
+.auth .form-item{
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth input{
+  border-bottom-width: 1px;
+  padding: 0.5rem;
+}
+
+.auth button{
+  text-align: right;
+  text-decoration-line: underline;
 }
 
 .hover\:bg-blue-600:hover{

@@ -1,12 +1,32 @@
-﻿<header>
+﻿@using Microsoft.AspNetCore.Identity
+
+<p>@User.Identity.IsAuthenticated</p>
+<header>
     <div class="px-4 py-2 mx-auto max-w-7xl">
         <div class="flex items-center justify-between">
             <nav>
-                <ul>
-                    <li class="gap-4 inline-flex">
+                <ul class="gap-4 flex">
+                    <li>
                         <a href="/admin/product">Produits</a>
+                    </li>
+                    <li>
                         <a href="/admin/user">Utilisateurs</a>
                     </li>
+                </ul>
+            </nav>
+            <nav>
+                <ul>
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a href="/logout">Déconnexion</a>
+                        </li>
+                    } else 
+                    {
+                        <li>
+                            <a href="/auth">Se connecter / S'enregister</a>
+                        </li>
+                    }
                 </ul>
             </nav>
         </div>

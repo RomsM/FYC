@@ -17,6 +17,7 @@
                         <th>ID</th>
                         <th>Email</th>
                         <th>Username</th>
+                        <th>Role</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,7 +26,8 @@
                         <tr>
                             <td>@user.Id</td>
                             <td>@user.Email</td>
-                            <td>@user.Username</td>
+                            <td>@user.UserName</td>
+                            <td>@user.Role</td>
                             <td>
                                 <div class="gap-4 flex">
                                     <a class="p-2 bg-blue-500 text-white rounded-sm hover:bg-blue-600 focus:bg-blue-600" href="/user/view/@user.Id">Voir</a>

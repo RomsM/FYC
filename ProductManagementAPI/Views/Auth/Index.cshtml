@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Authentication";
+}
+@if (ViewData["Error"] != null)
+{
+    <div class="text-red-500">
+        <p>@ViewData["Error"]</p>
+    </div>
+}
+
+<h1 class="mb-12 text-center">Authentication</h1>
+
+<div class="auth">
+    <div class="login">
+        <h2>Connexion</h2>
+        <form method="post" action="/api/auth/login">
+            <div class="form-item">
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" id="username" name="username" required />
+            </div>
+            <div class="form-item">
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
+
+    <div class="register">
+        <h2>Créer un compte</h2>
+        <form method="post" action="/api/auth/register">
+            <div class="form-item">
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" id="reg-username" name="username" required />
+            </div>
+            <div class="form-item">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-item">
+                <label for="reg-password">Mot de passe :</label>
+                <input type="password" id="reg-password" name="password" required />
+            </div>
+            <button type="submit">S'enregister</button>
+        </form>
+    </div>
+</div>

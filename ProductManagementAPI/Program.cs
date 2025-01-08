@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using ProductManagementAPI.Models;
 using ProductManagementAPI.Data;
 using System.Globalization;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +29,7 @@ CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
 // Configure Identity
-builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ProductContext>()
     .AddDefaultTokenProviders();
 
